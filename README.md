@@ -1,2 +1,2 @@
 # Currency Compare
-Currency status visualised using React.JSß
+Currency status visualised using React.JS
