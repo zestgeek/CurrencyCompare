@@ -1,2 +1,2 @@
-# idealreactseed
-The ideal react seed
+# Currency Compare
+Currency status visualised using React.JSß
