@@ -13,9 +13,16 @@ import {
 	YAxis
 } from 'recharts';
 
+import Select from 'react-select';
+
 import {
-	InCenter
+	InCenter,
+	CurrencyOption
 } from '../components';
+
+// css
+
+import 'react-select/dist/react-select.css';
 
 export default class Home extends React.Component {
 	render () {
@@ -30,16 +37,45 @@ export default class Home extends React.Component {
 	      {name: 'Page G', uv: 3490, pv: 4300, amt: 2100}
 		];
 
+		var options = [
+		  { value: {
+		  	flag: "https://restcountries.eu/data/usa.svg",
+		  	code: 'INR'
+		  }, label: 'One' },
+		  { value: 'two', label: 'Two' }
+		];
+
 		return (
-			<InCenter>
-				<h1 className="text-center">Currency Compare</h1>
-				<AreaChart width={600} height={300} data={data}>
-				  <Area type='monotone' dataKey='uv' stroke='#8884d8' fill='#8884d8' />
-				  <CartesianGrid stroke="#ccc" />
-				  <XAxis dataKey="name" />
-				  <YAxis />
-				</AreaChart>
-			</InCenter>
+			<div>
+				<InCenter>
+					<h1 className="text-center">Currency Compare</h1>
+					<AreaChart width={600} height={300} data={data}>
+					  <Area type='monotone' dataKey='uv' stroke='#8884d8' fill='#8884d8' />
+					  <CartesianGrid stroke="#ccc" />
+					  <XAxis dataKey="name" />
+					  <YAxis />
+					</AreaChart>
+				</InCenter>
+				<Row>
+					<Col sm="1/4"></Col>
+					<Col sm="1/4">
+						<Select
+						  name="form-field-name"
+						  value="one"
+						  options={options}
+						/>
+					</Col>
+					<Col sm="1/4">
+						<Select
+						  name="form-field-name"
+						  value="one"
+						  optionComponent={CurrencyOption}
+						  options={options}
+						/>
+					</Col>
+					<Col sm="1/4"></Col>
+				</Row>
+			</div>
 		)
 	}
 }

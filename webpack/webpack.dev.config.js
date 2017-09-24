@@ -13,7 +13,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             },{
-                test: /\.less$/,
+                test: /\.(css|less)$/,
                 loaders: ["style-loader", "css-loader", "less-loader"]
             }
         ]
