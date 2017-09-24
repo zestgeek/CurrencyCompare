@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "css-loader": "^0.28.5",
+    "elemental": "^0.6.1",
     "less-loader": "^4.0.5",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
