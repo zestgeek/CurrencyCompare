@@ -40,9 +40,9 @@ export default class Home extends React.Component {
 		var options = [
 		  { value: {
 		  	flag: "https://restcountries.eu/data/usa.svg",
-		  	code: 'INR'
-		  }, label: 'One' },
-		  { value: 'two', label: 'Two' }
+		  	code: 'INR',
+		  	name: 'Indian Rupee'
+		  }, label: 'One' }
 		];
 
 		return (
@@ -56,25 +56,36 @@ export default class Home extends React.Component {
 					  <YAxis />
 					</AreaChart>
 				</InCenter>
-				<Row>
-					<Col sm="1/4"></Col>
-					<Col sm="1/4">
-						<Select
-						  name="form-field-name"
-						  value="one"
-						  options={options}
-						/>
-					</Col>
-					<Col sm="1/4">
-						<Select
-						  name="form-field-name"
-						  value="one"
-						  optionComponent={CurrencyOption}
-						  options={options}
-						/>
-					</Col>
-					<Col sm="1/4"></Col>
-				</Row>
+				<Col>
+					<Row>
+						<Col sm="1/3"></Col>
+						<Col sm="1/3">
+							<Row>
+								<Col sm="1/2">
+									<Select
+									  name="form-field-name"
+									  value="one"
+									  options={options}
+									/>
+								</Col>
+								<Col sm="1/2">
+									<Select
+									  name="form-field-name"
+									  value="one"
+									  optionComponent={CurrencyOption}
+									  options={options}
+									/>
+								</Col>
+							</Row>
+							<Row>
+								<Col>
+									<h2>Live Currency Rates</h2>
+								</Col>
+							</Row>
+						</Col>
+						<Col sm="1/3"></Col>
+					</Row>
+				</Col>
 			</div>
 		)
 	}
