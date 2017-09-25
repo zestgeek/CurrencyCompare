@@ -1,11 +1,11 @@
-import types from '../actions/actionTypes';
+import * as types from '../actions/actionTypes';
 
 const initState = {
 	rates: [],
 	loading: false
 }
 
-export const currencyReducer = (state = initState, action = {}) => {
+const currencyReducer = (state = initState, action = {}) => {
 
 	const {type, payload} = action;
 
@@ -21,3 +21,5 @@ export const currencyReducer = (state = initState, action = {}) => {
 	}
 
 }
+
+export default currencyReducer;

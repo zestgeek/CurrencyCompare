@@ -2,4 +2,4 @@ import {
 	getApi
 } from '../utils';
 
-export default getLatestRatesAPI = getApi('latest');
+export const getLatestRatesAPI = getApi('latest');

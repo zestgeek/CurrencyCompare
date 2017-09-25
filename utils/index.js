@@ -41,7 +41,6 @@ export function apiReq (method, endPoint, data = {}, headers = {}) {
   return new Promise ((res, rej) => {
 
     headers = {
-      ...getHeaders(),
       ...headers
     }
 

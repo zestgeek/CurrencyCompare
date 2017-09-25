@@ -1,4 +1,4 @@
-import types from './actionTypes';
+import * as types from './actionTypes';
 
 import {
 	actionCreator
@@ -11,13 +11,13 @@ import {
 export const setCurrencyLoading = actionCreator(types.SET_CURRENCY_LOADING)
 export const setCurrencyRates = actionCreator(types.SET_CURRENCY_RATES)
 
-export const getLatestRates = (base = '') => {
+export const getLatestRates = (base) => {
 
 	return dispatch => {
 
 		dispatch(setCurrencyLoading(true))
 
-		getLatestRatesAPI({base})
+		getLatestRatesAPI(base && {base})
 			.then(res =>
 				dispatch(setCurrencyRates(res)))
 

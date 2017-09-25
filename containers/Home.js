@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {
 	Row,
 	Col
@@ -15,6 +16,8 @@ import {
 
 import Select from 'react-select';
 
+import * as currencyActions from '../actions/currency';
+
 import {
 	InCenter,
 	CurrencyOption
@@ -24,11 +27,15 @@ import {
 
 import 'react-select/dist/react-select.css';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
 
-	// componentDidMount() {
-		
-	// }
+	componentWillReceiveProps(nextProps) {
+		console.log(nextProps)
+	}
+
+	componentDidMount() {
+		this.props.dispatch(currencyActions.getLatestRates());
+	}
 
 	render () {
 
@@ -95,3 +102,5 @@ export default class Home extends React.Component {
 		)
 	}
 }
+
+export default connect(state => state)(Home);
