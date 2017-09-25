@@ -17,6 +17,9 @@ import {
 import Select from 'react-select';
 
 import * as currencyActions from '../actions/currency';
+import {
+	BASE
+} from '../constants';
 
 import {
 	InCenter,
@@ -34,7 +37,7 @@ class Home extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.dispatch(currencyActions.getLatestRates());
+		this.props.dispatch(currencyActions.getLatestRates(BASE));
 	}
 
 	render () {
