@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 import {
-  API_URL
+  API_URL,
+  FLAG_BASE_URL
 } from '../constants';
 
 // partialed functions
@@ -74,4 +75,8 @@ export function action (type, payload = null) {
     type,
     payload
   }
+}
+
+export const generateFlag = (name) => {
+  return `${FLAG_BASE_URL}${name.toLowerCase()}.svg`;
 }

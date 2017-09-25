@@ -18,8 +18,12 @@ import Select from 'react-select';
 
 import * as currencyActions from '../actions/currency';
 import {
-	BASE
+	BASE,
+	Countries
 } from '../constants';
+import {
+	generateFlag
+} from '../utils';
 
 import {
 	InCenter,
@@ -31,10 +35,6 @@ import {
 import 'react-select/dist/react-select.css';
 
 class Home extends React.Component {
-
-	componentWillReceiveProps(nextProps) {
-		console.log(nextProps)
-	}
 
 	componentDidMount() {
 		this.props.dispatch(currencyActions.getLatestRates(BASE));
@@ -52,14 +52,25 @@ class Home extends React.Component {
 	      {name: 'Page G', uv: 3490, pv: 4300, amt: 2100}
 		];
 
-		var options = [
-		  { value: {
-		  	flag: "https://restcountries.eu/data/usa.svg",
-		  	code: 'INR',
-		  	name: 'Indian Rupee'
-		  }, label: 'One' }
-		];
+		const {rates} = this.props.currencyReducer;
 
+		const newoptions = Countries.map(country => {
+
+			const rate = rates.find(rate => rate.name == country.currency.code);
+			const newCountry = {
+				flag: generateFlag(country.code),
+				code: country.currency.code,
+				name: country.currency.name,
+				value: rate && rate.value
+			}
+
+			return {
+				value: newCountry,
+				label: newCountry.code
+			}
+
+		})
+		
 		return (
 			<div>
 				<InCenter>
@@ -80,7 +91,7 @@ class Home extends React.Component {
 									<Select
 									  name="form-field-name"
 									  value="one"
-									  options={options}
+									  options={newoptions}
 									/>
 								</Col>
 								<Col sm="1/2">
@@ -88,7 +99,7 @@ class Home extends React.Component {
 									  name="form-field-name"
 									  value="one"
 									  optionComponent={CurrencyOption}
-									  options={options}
+									  options={newoptions}
 									/>
 								</Col>
 							</Row>
