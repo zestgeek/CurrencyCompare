@@ -8,6 +8,8 @@ import AppRoutes from './routes';
 
 import store from './store';
 
+import 'react-select/dist/react-select.css';
+
 ReactDOM.render(
 	<Provider store={store}>
 		<AppRoutes />

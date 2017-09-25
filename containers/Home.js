@@ -6,25 +6,14 @@ import {
 	Col
 } from 'elemental';
 
-import Select from 'react-select';
-
 import * as currencyActions from '../actions/currency';
 import {
-	BASE,
-	Countries
+	BASE
 } from '../constants';
-import {
-	generateFlag
-} from '../utils';
 
 import {
-	InCenter,
-	CurrencyOption
+	CurrencySelect
 } from '../components';
-
-// css
-
-import 'react-select/dist/react-select.css';
 
 class Home extends React.Component {
 
@@ -36,23 +25,6 @@ class Home extends React.Component {
 
 		const {rates} = this.props.currencyReducer;
 
-		const newoptions = Countries.map(country => {
-
-			const rate = rates.find(rate => rate.name == country.currency.code);
-			const newCountry = {
-				flag: generateFlag(country.code),
-				code: country.currency.code,
-				name: country.currency.name,
-				value: rate && rate.value
-			}
-
-			return {
-				value: newCountry,
-				label: newCountry.code
-			}
-
-		})
-
 		return (
 			<div>
 				<Col>
@@ -61,24 +33,14 @@ class Home extends React.Component {
 						<Col sm="1/3">
 							<Row>
 								<Col sm="1/2">
-									<Select
-									  name="form-field-name"
-									  value="one"
-									  options={newoptions}
-									/>
+									<CurrencySelect
+										rates={rates}
+										/>
 								</Col>
 								<Col sm="1/2">
-									<Select
-									  name="form-field-name"
-									  value="one"
-									  optionComponent={CurrencyOption}
-									  options={newoptions}
-									/>
-								</Col>
-							</Row>
-							<Row>
-								<Col>
-									<h2>Live Currency Rates</h2>
+									<CurrencySelect
+										rates={rates}
+										/>
 								</Col>
 							</Row>
 						</Col>
