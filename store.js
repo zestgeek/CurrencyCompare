@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import messageReducer from './reducers/message'
+import currencyReducer from './reducers/currency'
 import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
-  messageReducer
+  currencyReducer
 })
 const store = createStore(
   reducer,
