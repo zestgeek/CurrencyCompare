@@ -25,6 +25,11 @@ import {
 import 'react-select/dist/react-select.css';
 
 export default class Home extends React.Component {
+
+	// componentDidMount() {
+		
+	// }
+
 	render () {
 
 		const data = [
